@@ -4,9 +4,11 @@ import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
+@EnableConfigurationProperties
 public class Application {
 
 	public static void main(String[] args) {
@@ -19,6 +21,10 @@ public class Application {
 
 		ExampleValue value = applicationContext.getBean(ExampleValue.class);
 		value.print();
+
+		AppProperties properties = applicationContext.getBean(AppProperties.class);
+
+		System.out.println(properties.getValue1());
 
 	}
 
